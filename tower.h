@@ -9,7 +9,7 @@ class tower : public QObject
     Q_OBJECT
 public:
     explicit tower(QObject *parent = 0);
-    int health=15;
+    int health=100;
 signals:
 
 public slots:
