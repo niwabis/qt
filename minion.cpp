@@ -7,7 +7,7 @@ minion::minion()
 
 void minion::walk()
 {
-   static int health=10;
+    //static int health=10;
 
     if(y()>50){
         setPos(x(), y() - 20);
@@ -18,6 +18,8 @@ void minion::walk()
 
     if(y()==50){
         health--;
+        int j=1;
+        emit tatk(j);
     }
 
    if(health<=0) {

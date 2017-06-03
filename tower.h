@@ -9,11 +9,11 @@ class tower : public QObject
     Q_OBJECT
 public:
     explicit tower(QObject *parent = 0);
-
+    int health=15;
 signals:
 
 public slots:
-    void attacked(int);
+    void tatk(int);
 };
 
 #endif // TOWER_H

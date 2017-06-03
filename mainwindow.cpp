@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include"minion.h"
 #include"choosecard.h"
+#include"tower.h"
 #include<QPushButton>
 #include <QDebug>
 
@@ -10,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     choose(new ChooseCard),
+    Tower(new tower),
+    Minion(new minion),
     scene(new QGraphicsScene(0, 0, 1000,600)),
     timer(new QTimer)
 {
@@ -20,6 +23,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->card4, SIGNAL(clicked()), choose, SLOT(card4_pressed()));
     connect(ui->card5, SIGNAL(clicked()), choose, SLOT(card5_pressed()));
     connect(choose, SIGNAL(card(int)), this, SLOT(changecard(int)));
+    connect(Minion, SIGNAL(tatk(int)), Tower, SLOT(tatk(int)));
+    connect(Minion, SIGNAL(tatk(int)), this, SLOT(atk(int)));
+
 
     ui->graphicsView->setScene(scene);
 
@@ -28,10 +34,10 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->addItem(bg);
     bg->setPos(0,0);
 
-    tower =new QGraphicsPixmapItem(QPixmap(":/res/tower.png"));
-    tower->setPixmap(QPixmap(":/res/tower.png").scaled(800,50));
-    scene->addItem(tower);
-    tower->setPos(0,0);
+    wall =new QGraphicsPixmapItem(QPixmap(":/res/tower.png"));
+    wall->setPixmap(QPixmap(":/res/tower.png").scaled(800,50));
+    scene->addItem(wall);
+    wall->setPos(0,0);
 
 
     timer->start(500);
@@ -47,6 +53,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::changecard(int i){
     card=i;
+}
+void MainWindow::atk(int j){
+    qDebug()<<"atk";
+    ui->health->setValue(ui->health->value()-j);
 }
 
 void MainWindow::on_card1_clicked(){

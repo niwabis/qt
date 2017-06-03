@@ -9,7 +9,9 @@ class minion : public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     minion();
-
+   int health=10;
+signals:
+    void tatk(int);
 public slots:
     void walk();
 };

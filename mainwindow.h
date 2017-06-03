@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include"minion.h"
 #include"choosecard.h"
+#include"tower.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
@@ -26,6 +27,7 @@ public:
 private slots:
 
     void changecard(int);
+    void atk(int);
     void on_card1_clicked();
     void on_card2_clicked();
     void on_card3_clicked();
@@ -44,9 +46,11 @@ private:
     int card;
     ChooseCard *choose;
     Ui::MainWindow *ui;
+    tower *Tower;
+    minion *Minion;
     QGraphicsScene *scene;
     QGraphicsPixmapItem *bg;
-    QGraphicsPixmapItem *tower;
+    QGraphicsPixmapItem *wall;
     QTimer *timer;
 };
 

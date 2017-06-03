@@ -1,14 +1,13 @@
 #include "tower.h"
+
 tower::tower(QObject *parent) : QObject(parent)
 {
 
 }
 
-void tower::attacked(int i){
-    static int health=10;
-    health--;
-    qDebug()<<health;
+void tower::tatk(int i){
+    health-=i;
     if(health<=0){
-        qDebug()<<"dead";
+        qDebug()<<"game over";
     }
 }
