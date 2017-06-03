@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    bullet.cpp
+    minion.cpp \
+    choosecard.cpp
 
 HEADERS  += mainwindow.h \
-    bullet.h
+    minion.h \
+    choosecard.h
 
 FORMS    += mainwindow.ui
 

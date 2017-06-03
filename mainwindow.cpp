@@ -1,15 +1,26 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include"minion.h"
+#include"choosecard.h"
 #include<QPushButton>
 #include <QDebug>
 
+int card;
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
+    choose(new ChooseCard),
     scene(new QGraphicsScene(0, 0, 1000,600)),
     timer(new QTimer)
 {
     ui->setupUi(this);
+    connect(ui->card1, SIGNAL(clicked()), choose, SLOT(card1_pressed()));
+    connect(ui->card2, SIGNAL(clicked()), choose, SLOT(card2_pressed()));
+    connect(ui->card3, SIGNAL(clicked()), choose, SLOT(card3_pressed()));
+    connect(ui->card4, SIGNAL(clicked()), choose, SLOT(card4_pressed()));
+    connect(ui->card5, SIGNAL(clicked()), choose, SLOT(card5_pressed()));
+    connect(choose, SIGNAL(card(int)), this, SLOT(changecard(int)));
+
     ui->graphicsView->setScene(scene);
 
     bg =new QGraphicsPixmapItem(QPixmap(":/res/bg.png"));
@@ -22,14 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
     scene->addItem(tower);
     tower->setPos(0,0);
 
-    item = new QGraphicsPixmapItem(QPixmap(":/res/th.jpg"));
-    scene->addItem(item);
-    item->setPos(500, 50);
-
-    butt1 = new QGraphicsPixmapItem(QPixmap(":/res/red_bullet.png"));
-    butt1->setPixmap(QPixmap(":/res/red_bullet.png").scaled(50,50));
-    scene->addItem(butt1);
-    butt1->setPos(25,470);
 
     timer->start(500);
 
@@ -39,45 +42,325 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete choose;
 }
 
-void MainWindow::keyPressEvent(QKeyEvent *e)
-{
-    switch(e->key()) {
-    case Qt::Key_Up:
-    case Qt::Key_W:
-        item->setPos(item->x(), item->y() - 10);
-        break;
-    case Qt::Key_Down:
-    case Qt::Key_S:
-        item->setPos(item->x(), item->y() + 10);
-        break;
-    case Qt::Key_Left:
-    case Qt::Key_A:
-        item->setPos(item->x() - 10, item->y());
-        break;
-    case Qt::Key_Right:
-    case Qt::Key_D:
-        item->setPos(item->x() + 10, item->y());
-        break;
-    }
+void MainWindow::changecard(int i){
+    card=i;
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *e)
-{
-    bullet *b = new bullet;
-
-   b->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
-   b->setPos(item->x() + item->pixmap().width() / 2 - b->pixmap().width() / 2, item->y() - b->pixmap().height());
-    b->connect(timer, SIGNAL(timeout()), b, SLOT(fly()));
-    scene->addItem(static_cast<QGraphicsPixmapItem*>(b));
+void MainWindow::on_card1_clicked(){
+    qDebug()<<"choose card1";}
+void MainWindow::on_card2_clicked(){
+    qDebug()<<"choose card2";}
+void MainWindow::on_card3_clicked(){
+    qDebug()<<"choose card3";}
+void MainWindow::on_card4_clicked(){
+    qDebug()<<"choose card4";}
+void MainWindow::on_card5_clicked(){
+    qDebug()<<"choose card5";}
+void MainWindow::on_but1_clicked(){
+    qDebug()<<"1";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(45,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(45,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(45,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(45,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(45,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
 }
-void MainWindow::on_but1_clicked()
-{
-    bullet *minion=new bullet;
-    minion->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
-    minion->setPos(butt1->x() + butt1->pixmap().width() / 2 - minion->pixmap().width() / 2, butt1->y() - minion->pixmap().height());
-     minion->connect(timer, SIGNAL(timeout()), minion, SLOT(fly()));
-     scene->addItem(static_cast<QGraphicsPixmapItem*>(minion));
+void MainWindow::on_but2_clicked(){
+    qDebug()<<"2";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(145,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(145,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(145,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(145,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(145,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+}
+void MainWindow::on_but3_clicked(){
+    qDebug()<<"3";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(245,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(245,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(245,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(245,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(245,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+}
+void MainWindow::on_but4_clicked(){
+    qDebug()<<"4";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(345,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(345,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(345,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(345,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(345,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+}
+void MainWindow::on_but5_clicked(){
+    qDebug()<<"5";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(445,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(445,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(445,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(445,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(445,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+}
+void MainWindow::on_but6_clicked(){
+    qDebug()<<"6";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(545,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(545,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(545,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(545,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(545,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+}
+void MainWindow::on_but7_clicked(){
+    qDebug()<<"7";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(645,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(645,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(645,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(645,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(645,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+}
+void MainWindow::on_but8_clicked(){
+    qDebug()<<"8";
+    if(card==1){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPos(745,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==2){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPos(745,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==3){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPos(745,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==4){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPos(745,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
+    else if(card==5){
+        minion *min=new minion;
+        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPos(745,450);
+         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk()));
+         scene->addItem(static_cast<QGraphicsPixmapItem*>(min));
+         card=0;    }
 }
 

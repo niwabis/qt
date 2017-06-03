@@ -1,11 +1,11 @@
-#include "bullet.h"
+#include "minion.h"
 
-bullet::bullet()
+minion::minion()
 {
 
 }
 
-void bullet::fly()
+void minion::walk()
 {
    static int health=10;
 

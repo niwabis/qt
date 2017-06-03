@@ -1,12 +1,11 @@
 <RCC>
     <qresource prefix="/">
-        <file>res/black_bullet.png</file>
-        <file>res/red_bullet.png</file>
-        <file>res/reimu.jpg</file>
-        <file>res/th.jpg</file>
-        <file>res/grass.png</file>
         <file>res/tower.png</file>
         <file>res/giant.png</file>
         <file>res/bg.png</file>
+        <file>res/2b.jpg</file>
+        <file>res/9s.png</file>
+        <file>res/a2.png</file>
+        <file>res/emil.png</file>
     </qresource>
 </RCC>

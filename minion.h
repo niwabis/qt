@@ -4,14 +4,14 @@
 #include <QObject>
 #include <QGraphicsPixmapItem>
 
-class bullet : public QObject, public QGraphicsPixmapItem
+class minion : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
 public:
-    bullet();
+    minion();
 
 public slots:
-    void fly();
+    void walk();
 };
 
 #endif // BULLET_H

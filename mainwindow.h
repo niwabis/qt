@@ -1,12 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
-
+#include"minion.h"
+#include"choosecard.h"
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QTimer>
 
-#include "bullet.h"
+#include "minion.h"
 
 #include <QKeyEvent>
 
@@ -22,22 +23,30 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
-public slots:
-    virtual void keyPressEvent(QKeyEvent *e);
-    virtual void mousePressEvent(QMouseEvent *e);
-
 private slots:
-    void on_pushButton_8_clicked();
 
+    void changecard(int);
+    void on_card1_clicked();
+    void on_card2_clicked();
+    void on_card3_clicked();
+    void on_card4_clicked();
+    void on_card5_clicked();
     void on_but1_clicked();
+    void on_but2_clicked();
+    void on_but3_clicked();
+    void on_but4_clicked();
+    void on_but5_clicked();
+    void on_but6_clicked();
+    void on_but7_clicked();
+    void on_but8_clicked();
 
 private:
+    int card;
+    ChooseCard *choose;
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
-    QGraphicsPixmapItem *item;
     QGraphicsPixmapItem *bg;
     QGraphicsPixmapItem *tower;
-    QGraphicsPixmapItem *butt1;
     QTimer *timer;
 };
 
