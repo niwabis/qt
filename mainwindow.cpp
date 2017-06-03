@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->graphicsView->setScene(scene);
 
     bg =new QGraphicsPixmapItem(QPixmap(":/res/bg.png"));
-    bg->setPixmap(QPixmap(":/res/bg.png").scaled(1000, 545));
+    bg->setPixmap(QPixmap(":/res/bg.png").scaled(1000, 600));
     scene->addItem(bg);
     bg->setPos(0,0);
 
