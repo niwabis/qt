@@ -28,6 +28,7 @@ private slots:
 
     void changecard(int);
     void atk(int);
+    void manaplus();
     void on_card1_clicked();
     void on_card2_clicked();
     void on_card3_clicked();
@@ -41,9 +42,16 @@ private slots:
     void on_but6_clicked();
     void on_but7_clicked();
     void on_but8_clicked();
+    void on_x05_clicked();
+    void on_x075_clicked();
+    void on_x1_clicked();
+    void on_x15_clicked();
+    void on_x2_clicked();
 
 private:
     int card;
+    int t;
+    static int mana;
     ChooseCard *choose;
     Ui::MainWindow *ui;
     tower *Tower;
