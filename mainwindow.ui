@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
-    <height>600</height>
+    <width>1200</width>
+    <height>590</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -22,7 +22,7 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1100</width>
+      <width>1200</width>
       <height>545</height>
      </rect>
     </property>
@@ -208,8 +208,11 @@
       <height>20</height>
      </rect>
     </property>
+    <property name="maximum">
+     <number>1000</number>
+    </property>
     <property name="value">
-     <number>100</number>
+     <number>1000</number>
     </property>
    </widget>
    <widget class="QPushButton" name="x05">
@@ -281,7 +284,7 @@
     <property name="geometry">
      <rect>
       <x>800</x>
-      <y>10</y>
+      <y>30</y>
       <width>160</width>
       <height>20</height>
      </rect>
@@ -293,13 +296,81 @@
      <number>0</number>
     </property>
    </widget>
+   <widget class="QPushButton" name="easy">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>80</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>easy</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="norml">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>170</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>normal</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="hard">
+    <property name="geometry">
+     <rect>
+      <x>1060</x>
+      <y>260</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>hard</string>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="time">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>5</y>
+      <width>160</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QProgressBar" name="hero">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>55</y>
+      <width>160</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>50</number>
+    </property>
+    <property name="value">
+     <number>50</number>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1100</width>
+     <width>1200</width>
      <height>23</height>
     </rect>
    </property>

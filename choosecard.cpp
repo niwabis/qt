@@ -5,7 +5,7 @@ ChooseCard::ChooseCard(QObject *parent) : QObject(parent),i(0)
 
 }
 
-void ChooseCard::card1_pressed()
+void ChooseCard::card1_pressed()                                                //emit a signal let buttom know which card you choose
 {
     int i=1;
     emit card(i);

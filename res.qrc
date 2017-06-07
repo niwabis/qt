@@ -7,5 +7,7 @@
         <file>res/9s.png</file>
         <file>res/a2.png</file>
         <file>res/emil.png</file>
+        <file>res/end.png</file>
+        <file>res/victory.png</file>
     </qresource>
 </RCC>
