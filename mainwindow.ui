@@ -144,7 +144,18 @@
      </rect>
     </property>
     <property name="text">
-     <string>card1</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normalon>:/res/min1.jpg</normalon>
+     </iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>80</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="card4">
@@ -157,7 +168,17 @@
      </rect>
     </property>
     <property name="text">
-     <string>card4</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/res/min4.jpg</normaloff>:/res/min4.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>80</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="card3">
@@ -170,7 +191,17 @@
      </rect>
     </property>
     <property name="text">
-     <string>card3</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/res/min3.jpg</normaloff>:/res/min3.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>80</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="card2">
@@ -183,7 +214,17 @@
      </rect>
     </property>
     <property name="text">
-     <string>card2</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/res/min2.jpg</normaloff>:/res/min2.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>80</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="card5">
@@ -196,7 +237,17 @@
      </rect>
     </property>
     <property name="text">
-     <string>card5</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/res/min5.jpg</normaloff>:/res/min5.jpg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>160</width>
+      <height>80</height>
+     </size>
     </property>
    </widget>
    <widget class="QProgressBar" name="health">
@@ -364,6 +415,19 @@
      <number>50</number>
     </property>
    </widget>
+   <widget class="QPushButton" name="start">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>5</y>
+      <width>160</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>start</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -386,6 +450,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

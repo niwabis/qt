@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     end =new QGraphicsPixmapItem(QPixmap(":/res/end.png"));                                                     //new a QGraphics... for battle end
 
-    timer->start(500);                                                                                                                                      //everything move by 0.5s
+   // timer->start(500);                                                                                                                                      //everything move by 0.5s
 
     /*if(ui->health->value()==0){
         qDebug()<<"stop";
@@ -77,17 +77,16 @@ void MainWindow::heroshealth(){                                                 
 void MainWindow::herobeattack(){                                                                                                            //if hero walk into tower's attack range,be attacked
     if(hero->y()<71){
         herohealth--;
-        emit tatk(3);                                                                                                                                               //at the same time,hero attack tower
-       // ui->hero->setValue(ui->hero->value()-1);
+        ui->hero->setValue(herohealth);
+        emit tatk(4);                                                                                                                                               //at the same time,hero attack tower
         }
     else if(hero->x()==100000000){                                                                                                          //if hero is far far away,hero's health is still 0
         herohealth=0;
     }
     else{
         herohealth++;
-        //ui->hero->setValue(ui->hero->value()+1);
+        ui->hero->setValue(herohealth);
         }
-    ui->hero->setValue(herohealth);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e)                                                                                 //use wasd to control hero,12345678 to choose where your minion born,qwert to choose card
@@ -152,6 +151,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e)                                    
     case Qt::Key_T:
          ui->card5->clicked();
          break;
+   case Qt::Key_Space:
+        ui->start->clicked();
+        break;
     }
 }
 
@@ -165,12 +167,15 @@ void MainWindow::gamestatus(){                                                  
         end->setPixmap(QPixmap(":/res/end.png").scaled(800, 600));
         scene->addItem(end);
         end->setPos(-100,0);
+        MainWindow::timer->stop();
     }
     else if(ui->health->value()==0){//if tower destroyed,you win
         end->setPixmap(QPixmap(":/res/victory.png").scaled(800, 600));
         scene->addItem(end);
         end->setPos(-100,0);
+        MainWindow::timer->stop();
     }
+
 }
 
 void MainWindow::atk(int j){                                                                                                                    //progress bar decrease when tower is attacked
@@ -201,7 +206,7 @@ void MainWindow::on_but1_clicked(){                                             
     //qDebug()<<"1";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(-60,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -211,7 +216,7 @@ void MainWindow::on_but1_clicked(){                                             
         mana-=2;}
    else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(-60,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -221,7 +226,7 @@ void MainWindow::on_but1_clicked(){                                             
        mana-=4;}
    else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(-60,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -231,7 +236,7 @@ void MainWindow::on_but1_clicked(){                                             
         mana-=6;}
    else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(-60,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -241,7 +246,7 @@ void MainWindow::on_but1_clicked(){                                             
         mana-=8;}
    else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(-60,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -254,7 +259,7 @@ void MainWindow::on_but2_clicked(){
     //qDebug()<<"2";
         if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(40,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -264,7 +269,7 @@ void MainWindow::on_but2_clicked(){
         mana-=2;}
         else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(40,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -274,7 +279,7 @@ void MainWindow::on_but2_clicked(){
        mana-=4;}
     else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(40,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -284,7 +289,7 @@ void MainWindow::on_but2_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(40,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -294,7 +299,7 @@ void MainWindow::on_but2_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(40,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -307,7 +312,7 @@ void MainWindow::on_but3_clicked(){
    // qDebug()<<"3";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(140,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -317,7 +322,7 @@ void MainWindow::on_but3_clicked(){
         mana-=2;}
     else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(140,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -327,7 +332,7 @@ void MainWindow::on_but3_clicked(){
        mana-=4;}
       else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(140,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -337,7 +342,7 @@ void MainWindow::on_but3_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(140,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -347,7 +352,7 @@ void MainWindow::on_but3_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(140,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -360,7 +365,7 @@ void MainWindow::on_but4_clicked(){
     //qDebug()<<"4";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(240,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -370,7 +375,7 @@ void MainWindow::on_but4_clicked(){
         mana-=2;}
     else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(240,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -380,7 +385,7 @@ void MainWindow::on_but4_clicked(){
         mana-=4;}
     else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(240,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -390,7 +395,7 @@ void MainWindow::on_but4_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(240,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -400,7 +405,7 @@ void MainWindow::on_but4_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(240,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -413,7 +418,7 @@ void MainWindow::on_but5_clicked(){
  //   qDebug()<<"5";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(340,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -423,7 +428,7 @@ void MainWindow::on_but5_clicked(){
         mana-=2;}
     else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(340,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -433,7 +438,7 @@ void MainWindow::on_but5_clicked(){
        mana-=4;}
     else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(340,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -443,7 +448,7 @@ void MainWindow::on_but5_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(340,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -453,7 +458,7 @@ void MainWindow::on_but5_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(340,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -466,7 +471,7 @@ void MainWindow::on_but6_clicked(){
   //  qDebug()<<"6";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(440,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -476,7 +481,7 @@ void MainWindow::on_but6_clicked(){
         mana-=2;}
     else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(440,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -486,7 +491,7 @@ void MainWindow::on_but6_clicked(){
        mana-=4;}
     else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(440,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -496,7 +501,7 @@ void MainWindow::on_but6_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(440,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -506,7 +511,7 @@ void MainWindow::on_but6_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(440,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -519,7 +524,7 @@ void MainWindow::on_but7_clicked(){
    // qDebug()<<"7";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(540,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -529,7 +534,7 @@ void MainWindow::on_but7_clicked(){
         mana-=2;}
     else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(540,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -539,7 +544,7 @@ void MainWindow::on_but7_clicked(){
        mana-=4;}
     else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(540,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -549,7 +554,7 @@ void MainWindow::on_but7_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(540,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -559,7 +564,7 @@ void MainWindow::on_but7_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(540,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -572,7 +577,7 @@ void MainWindow::on_but8_clicked(){
     //qDebug()<<"8";
     if(card==1&&mana>=2){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/giant.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m1.jpg").scaled(20,20));
         min->setPos(640,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk1()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -582,7 +587,7 @@ void MainWindow::on_but8_clicked(){
         mana-=2;}
     else if(card==2&&mana>=4){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/2b.jpg").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m2.jpg").scaled(20,20));
         min->setPos(640,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk2()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -592,7 +597,7 @@ void MainWindow::on_but8_clicked(){
        mana-=4;}
     else if(card==3&&mana>=6){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/a2.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m3.jpg").scaled(20,20));
         min->setPos(640,450);
          min->connect(timer, SIGNAL(timeout()), min, SLOT(walk3()));
          connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -602,7 +607,7 @@ void MainWindow::on_but8_clicked(){
         mana-=6;}
     else if(card==4&&mana>=8){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/9s.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m4.jpg").scaled(20,20));
         min->setPos(640,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk4()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -612,7 +617,7 @@ void MainWindow::on_but8_clicked(){
         mana-=8;}
     else if(card==5&&mana>=10){
         minion *min=new minion;
-        min->setPixmap(QPixmap(":/res/emil.png").scaled(20,20));
+        min->setPixmap(QPixmap(":/res/m5.jpg").scaled(20,20));
         min->setPos(645,450);
         min->connect(timer, SIGNAL(timeout()), min, SLOT(walk5()));
         connect(min, SIGNAL(tatk(int)), this, SLOT(atk(int)));
@@ -623,24 +628,24 @@ void MainWindow::on_but8_clicked(){
 }
 
 void MainWindow::on_x05_clicked(){                                                                                                    //change game speed
-    qDebug()<<"x0.5";
+    //qDebug()<<"x0.5";
     t=1000;
-    timer->start(t);}
+    MainWindow::timer->start(t);}
 void MainWindow::on_x075_clicked(){
-    qDebug()<<"x0.75";
+    //qDebug()<<"x0.75";
     t=750;
-    timer->start(t);}
+   MainWindow:: timer->start(t);}
 void MainWindow::on_x1_clicked(){
-    qDebug()<<"x1";
+    //qDebug()<<"x1";
     t=500;
-    timer->start(t);}
+    MainWindow::timer->start(t);}
 void MainWindow::on_x15_clicked(){
-    qDebug()<<"x1.5";
+    //qDebug()<<"x1.5";
     t=375;
-    timer->start(t);}
+    MainWindow::timer->start(t);}
 void MainWindow::on_x2_clicked(){
-    qDebug()<<"x2";
-    t=500;
+    //qDebug()<<"x2";
+    MainWindow::t=500;
     timer->start(t);}
 
 void MainWindow::on_easy_clicked(){                                                                                                 //change game difficulty
@@ -653,6 +658,10 @@ void MainWindow::on_hard_clicked(){
 
 }
 
+void MainWindow::on_start_clicked()
+{
+    MainWindow::on_x1_clicked();
+}
 
 //useless funtion
 void MainWindow::on_card1_clicked()
@@ -675,3 +684,5 @@ void MainWindow::on_card5_clicked()
 {
 
 }
+
+

@@ -9,5 +9,15 @@
         <file>res/emil.png</file>
         <file>res/end.png</file>
         <file>res/victory.png</file>
+        <file>res/m1.jpg</file>
+        <file>res/m2.jpg</file>
+        <file>res/m3.jpg</file>
+        <file>res/m4.jpg</file>
+        <file>res/m5.jpg</file>
+        <file>res/min1.jpg</file>
+        <file>res/min2.jpg</file>
+        <file>res/min3.jpg</file>
+        <file>res/min4.jpg</file>
+        <file>res/min5.jpg</file>
     </qresource>
 </RCC>

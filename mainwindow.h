@@ -59,6 +59,8 @@ private slots:
 
     void on_hard_clicked();
 
+    void on_start_clicked();
+
 private:
     int card;
     int t;
