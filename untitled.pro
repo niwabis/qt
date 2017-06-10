@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     minion.cpp \
     choosecard.cpp \
-    tower.cpp
+    tower.cpp \
+    magic.cpp
 
 HEADERS  += mainwindow.h \
     minion.h \
     choosecard.h \
-    tower.h
+    tower.h \
+    magic.h
 
 FORMS    += mainwindow.ui
 

@@ -9,11 +9,11 @@ class minion : public QObject, public QGraphicsPixmapItem
     Q_OBJECT
 public:
     minion();
-   int health1=10;
-   int health2=10;
-   int health3=15;
-   int health4=5;
-   int health5=20;
+   int health1=100;
+   int health2=100;
+   int health3=150;
+   int health4=50;
+   int health5=200;
 
 signals:
     void tatk(int);

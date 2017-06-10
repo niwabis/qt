@@ -52,18 +52,18 @@ private slots:
     void on_x1_clicked();
     void on_x15_clicked();
     void on_x2_clicked();
-
     void on_easy_clicked();
-
     void on_norml_clicked();
-
     void on_hard_clicked();
-
     void on_start_clicked();
+    void on_magic1_clicked();
+    void fireball();
+
 
 private:
     int card;
     int t;
+    static int a;
     static int mana;
     static int herohealth;
     ChooseCard *choose;
@@ -72,6 +72,7 @@ private:
     minion *Minion;
     QGraphicsScene *scene;
     QGraphicsPixmapItem *bg;
+    QGraphicsPixmapItem *fb;
     QGraphicsPixmapItem *hero;
     QGraphicsPixmapItem *end;
     QGraphicsPixmapItem *wall;

@@ -6,14 +6,14 @@ minion::minion()
 }
 
 void minion::walk1(){                                         //the way card1 walk
-    if(y()>50){                                                         //if y>50,keep walking
-        setPos(x(), y() - 20);   }
+    if(y()>-5){                                                         //if y>50,keep walking
+        setPos(x(), y() - 2);   }
    else {                                                                   //else,stop and attack tower
        setPos(x(),y());
        int j=1;
        emit tatk(j);   }
 
-    if(y()<=70){                                                     //if y<=70,attacked by tower
+    if(y()<=15){                                                     //if y<=70,attacked by tower
         health1--;
          }
 
@@ -22,14 +22,14 @@ void minion::walk1(){                                         //the way card1 wa
 }
 
 void minion::walk2(){                                         //card2~5 follow as card1
-    if(y()>50){
-        setPos(x(), y() - 20);   }
+    if(y()>5){
+        setPos(x(), y() - 2);   }
    else {
        setPos(x(),y());
        int j=2;
        emit tatk(j); }
 
-    if(y()<=70){
+    if(y()<=15){
         health2--;
            }
 
@@ -38,14 +38,14 @@ void minion::walk2(){                                         //card2~5 follow a
 }
 
 void minion::walk3(){
-    if(y()==80){
+    if(y()==25){
         setPos(x(), y() );
         int j=1;
         emit tatk(j); }
    else {
-       setPos(x(),y()-10);  }
+       setPos(x(),y()-1);  }
 
-    if(y()<=70){
+    if(y()<=15){
         health3--;
           }
 
@@ -54,14 +54,14 @@ void minion::walk3(){
 }
 
 void minion::walk4(){
-    if(y()>50){
-        setPos(x(), y() - 25);   }
+    if(y()>5){
+        setPos(x(), y() - 3);   }
    else {
        setPos(x(),y());
-       int j=4;
+       int j=3;
        emit tatk(j);}
 
-    if(y()<=70){
+    if(y()<=15){
         health4--;
             }
 
@@ -70,14 +70,14 @@ void minion::walk4(){
 }
 
 void minion::walk5(){
-    if(y()>50){
-        setPos(x(), y() - 10);   }
+    if(y()>0){
+        setPos(x(), y() - 1);   }
    else {
        setPos(x(),y());
        int j=2;
        emit tatk(j);  }
 
-    if(y()<=70){
+    if(y()<=15){
         health5--;
          }
 

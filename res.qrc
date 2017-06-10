@@ -19,5 +19,8 @@
         <file>res/min3.jpg</file>
         <file>res/min4.jpg</file>
         <file>res/min5.jpg</file>
+        <file>res/magic1.png</file>
+        <file>res/fireball.png</file>
+        <file>res/fb.png</file>
     </qresource>
 </RCC>

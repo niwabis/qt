@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1200</width>
-    <height>590</height>
+    <height>700</height>
    </rect>
   </property>
   <property name="focusPolicy">
@@ -20,10 +20,10 @@
    <widget class="QGraphicsView" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-10</x>
       <y>0</y>
       <width>1200</width>
-      <height>545</height>
+      <height>650</height>
      </rect>
     </property>
     <property name="focusPolicy">
@@ -137,8 +137,8 @@
    <widget class="QPushButton" name="card1">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>80</y>
+      <x>820</x>
+      <y>110</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -161,8 +161,8 @@
    <widget class="QPushButton" name="card4">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>350</y>
+      <x>820</x>
+      <y>380</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -184,8 +184,8 @@
    <widget class="QPushButton" name="card3">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>260</y>
+      <x>820</x>
+      <y>290</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -207,8 +207,8 @@
    <widget class="QPushButton" name="card2">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>170</y>
+      <x>820</x>
+      <y>200</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -230,8 +230,8 @@
    <widget class="QPushButton" name="card5">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>440</y>
+      <x>820</x>
+      <y>470</y>
       <width>160</width>
       <height>80</height>
      </rect>
@@ -260,17 +260,17 @@
      </rect>
     </property>
     <property name="maximum">
-     <number>1000</number>
+     <number>10000</number>
     </property>
     <property name="value">
-     <number>1000</number>
+     <number>10000</number>
     </property>
    </widget>
    <widget class="QPushButton" name="x05">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>80</y>
+      <x>10</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -282,8 +282,8 @@
    <widget class="QPushButton" name="x075">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>170</y>
+      <x>110</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -295,8 +295,8 @@
    <widget class="QPushButton" name="x1">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>260</y>
+      <x>210</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -308,8 +308,8 @@
    <widget class="QPushButton" name="x15">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>350</y>
+      <x>310</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -321,8 +321,8 @@
    <widget class="QPushButton" name="x2">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>440</y>
+      <x>410</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -334,14 +334,14 @@
    <widget class="QProgressBar" name="mana">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>30</y>
+      <x>850</x>
+      <y>50</y>
       <width>160</width>
       <height>20</height>
      </rect>
     </property>
     <property name="maximum">
-     <number>100</number>
+     <number>200</number>
     </property>
     <property name="value">
      <number>0</number>
@@ -350,8 +350,8 @@
    <widget class="QPushButton" name="easy">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>80</y>
+      <x>510</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -363,8 +363,8 @@
    <widget class="QPushButton" name="norml">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>170</y>
+      <x>610</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -376,8 +376,8 @@
    <widget class="QPushButton" name="hard">
     <property name="geometry">
      <rect>
-      <x>1060</x>
-      <y>260</y>
+      <x>710</x>
+      <y>540</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -389,8 +389,8 @@
    <widget class="QProgressBar" name="time">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>5</y>
+      <x>850</x>
+      <y>20</y>
       <width>160</width>
       <height>20</height>
      </rect>
@@ -402,30 +402,140 @@
    <widget class="QProgressBar" name="hero">
     <property name="geometry">
      <rect>
-      <x>800</x>
-      <y>55</y>
+      <x>850</x>
+      <y>80</y>
       <width>160</width>
       <height>20</height>
      </rect>
     </property>
     <property name="maximum">
-     <number>50</number>
+     <number>500</number>
     </property>
     <property name="value">
-     <number>50</number>
+     <number>500</number>
     </property>
    </widget>
    <widget class="QPushButton" name="start">
     <property name="geometry">
      <rect>
-      <x>970</x>
-      <y>5</y>
+      <x>1010</x>
+      <y>10</y>
       <width>160</width>
       <height>60</height>
      </rect>
     </property>
     <property name="text">
      <string>start</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="magic1">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>110</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="res.qrc">
+      <normaloff>:/res/magic1.png</normaloff>:/res/magic1.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>180</width>
+      <height>100</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="magic2">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>200</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="magic3">
+    <property name="geometry">
+     <rect>
+      <x>1010</x>
+      <y>290</y>
+      <width>160</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>758</x>
+      <y>80</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="text">
+     <string>hero's health</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>800</x>
+      <y>50</y>
+      <width>51</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>mana</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>20</y>
+      <width>41</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>time</string>
     </property>
    </widget>
   </widget>
