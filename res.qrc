@@ -1,11 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>res/tower.png</file>
-        <file>res/giant.png</file>
         <file>res/bg.png</file>
-        <file>res/2b.jpg</file>
-        <file>res/9s.png</file>
-        <file>res/a2.png</file>
         <file>res/emil.png</file>
         <file>res/end.png</file>
         <file>res/victory.png</file>
@@ -22,5 +18,15 @@
         <file>res/magic1.png</file>
         <file>res/fireball.png</file>
         <file>res/fb.png</file>
+        <file>res/reborn.png</file>
+        <file>res/back.png</file>
+        <file>res/mccreec.wav</file>
+        <file>res/mercyc.wav</file>
+        <file>res/mercye.wav</file>
+        <file>res/pharahc.wav</file>
+        <file>res/pharahe.wav</file>
+        <file>res/mccreee.wav</file>
+        <file>res/victory.wav</file>
+        <file>res/defeat.wav</file>
     </qresource>
 </RCC>

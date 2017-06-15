@@ -5,8 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = untitled
 TEMPLATE = app
@@ -30,14 +29,4 @@ FORMS    += mainwindow.ui
 RESOURCES += \
     res.qrc
 
-DISTFILES += \
-    res/min5.jpg \
-    res/min4.jpg \
-    res/min3.jpg \
-    res/min2.jpg \
-    res/min1.jpg \
-    res/m5.jpg \
-    res/m4.jpg \
-    res/m3.jpg \
-    res/m2.jpg \
-    res/m1.jpg
+

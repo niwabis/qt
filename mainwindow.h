@@ -7,11 +7,17 @@
 #include <QGraphicsScene>
 #include <QGraphicsPixmapItem>
 #include <QTimer>
-
 #include "minion.h"
-
+#include<QVector>
 #include <QKeyEvent>
-
+#include"choosecard.h"
+#include"magic.h"
+#include<QPushButton>
+#include <QDebug>
+#include<QTime>
+#include"time.h"
+#include<QWidget>
+#include<QSound>
 namespace Ui {
 class MainWindow;
 }
@@ -25,6 +31,7 @@ public:
     ~MainWindow();
 signals:
     void tatk(int);
+    void sst(int);
 public slots:
     virtual void keyPressEvent(QKeyEvent *e);
 private slots:
@@ -58,23 +65,35 @@ private slots:
     void on_start_clicked();
     void on_magic1_clicked();
     void fireball();
+    void st(int);
 
+    void on_magic2_clicked();
 
 private:
+    QVector<int> number;
     int card;
     int t;
-    static int a;
+    static int start;
+    static int start1;
+    static int started;
     static int mana;
     static int herohealth;
+    static int count;
     ChooseCard *choose;
     Ui::MainWindow *ui;
     tower *Tower;
     minion *Minion;
     QGraphicsScene *scene;
     QGraphicsPixmapItem *bg;
+    QGraphicsPixmapItem *back;
     QGraphicsPixmapItem *fb;
     QGraphicsPixmapItem *hero;
     QGraphicsPixmapItem *end;
+    QGraphicsPixmapItem *m1;
+    QGraphicsPixmapItem *m2;
+    QGraphicsPixmapItem *m3;
+    QGraphicsPixmapItem *m4;
+    QGraphicsPixmapItem *m5;
     QGraphicsPixmapItem *wall;
     QTimer *timer;
 };
